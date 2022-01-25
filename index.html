@@ -142,7 +142,7 @@ div.operationContent {
 
                 <div>
                     <input type="button" id="permit" value="SafariでDeviceOrientationを許可"/>
-                    <p>【方角】<span id="direction"></span></p>
+                    <p>方角：<span id="direction"></span></p>
                 </div>
 
                 <div id="videoContainer">
@@ -163,7 +163,7 @@ div.operationContent {
             <td>
                 <div id="operation" class="operation">
                     <iframe id="mapURL" src="https://maps.gsi.go.jp/?hc=hic#14/35.636197/139.838276/&base=std&ls=std&disp=1&vs=c1j0h0k0l0u0t0z0r0s0m0f1" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe><br>
-                    <button onclick="test()">現在地と標高を取得</button>
+                    <button onclick="fetchData()">現在地と標高を取得</button>
                 </div>
 
 
@@ -477,7 +477,9 @@ function replaceURL(){
 
 //----------------------------------[方位情報取得に関するJavaScript]----------------------------------
 
-// OS識別用
+function compass(){
+
+    // OS識別用
 let os;
 
 // DOM構築完了イベントハンドラ登録
@@ -619,6 +621,15 @@ function permitDeviceOrientationForSafari() {
             }
         })
         .catch(console.error);
+}
+
+}
+
+//位置情報・標高取得と方位取得の機能をまとめる
+
+function fetchData(){
+    test();
+    compass();
 }
 
 
